@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { UserCircleIcon } from "@heroicons/react/outline";
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import Register from "../Register/Register";
+import { swal } from "../../../utils/Swal";
+
+const { REACT_APP_API_ENDPOINT } = process.env;
 
 export default function Login() {
   const [showModal, setShowModal] = useState(false);
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const initialValues = {
     email: "",
@@ -17,35 +20,33 @@ export default function Login() {
   const required = "* Campo obligatorio";
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .min(4, "La cantidad mínima de caracteres es 4")
-      .required(required),
+    email: Yup.string().email("Debe ser un email válido").required(required),
     password: Yup.string().required(required),
   });
 
   const onSubmit = () => {
-    alert("Iniciaste sesión");
-    // const { email, password } = values;
+    const { email, password } = values;
 
-    // fetch(`${REACT_APP_API_ENDPOINT}auth/login`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     email,
-    //     password,
-    //   }),
-    // })
-    //   .then((resp) => resp.json())
-    //   .then((data) => {
-    //     if (data.status_code === 200) {
-    //       localStorage.setItem("token", data?.result?.token);
-    //       localStorage.setItem("email", data?.result?.user.email);
-    //       navigate("/", { replace: true });
-    //     } else {
-    //     }
-    //   });
+    fetch(`${REACT_APP_API_ENDPOINT}auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data.status_code === 200) {
+          localStorage.setItem("token", data?.result?.token);
+          localStorage.setItem("email", data?.result?.user.email);
+          navigate("/", { replace: true });
+        } else {
+          swal();
+        }
+      });
   };
 
   const formik = useFormik({ initialValues, validationSchema, onSubmit });
@@ -70,7 +71,7 @@ export default function Login() {
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
-                <div className="flex items-start justify-between p-5 sm:w-96 border-b border-solid border-slate-200 rounded-t">
+                <div className="flex items-start justify-between p-5 w-72 sm:w-96 border-b border-solid border-slate-200 rounded-t">
                   <h3 className="text-2xl font-semibold">Iniciar sesión</h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black float-right text-2xl leading-none font-semibold outline-none focus:outline-none"
@@ -83,11 +84,15 @@ export default function Login() {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  <form class="space-y-6" action="#" onSubmit={handleSubmit}>
+                  <form
+                    className="space-y-6"
+                    action="#"
+                    onSubmit={handleSubmit}
+                  >
                     <div>
                       <label
-                        for="email"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        htmlFor="email"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                       >
                         Email
                       </label>
@@ -109,7 +114,7 @@ export default function Login() {
                     </div>
                     <div>
                       <label
-                        for="password"
+                        htmlFor="password"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                       >
                         Contraseña
@@ -141,7 +146,7 @@ export default function Login() {
                           />
                         </div>
                         <label
-                          for="remember"
+                          htmlFor="remember"
                           className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                         >
                           Recordar
@@ -161,15 +166,15 @@ export default function Login() {
                     >
                       Iniciar
                     </button>
-                    <div className="flex text-sm font-medium text-gray-500 dark:text-gray-300">
-                      ¿No está registrado?{" "}
-                      <button
-                        className="text-blue-700 hover:underline dark:text-blue-500"
-                        onClick={() => setShowModal(false)}
-                      ></button>
-                      <Register />
-                    </div>
                   </form>
+                  <div className="flex text-sm font-medium text-gray-500 dark:text-gray-300 mt-6">
+                    ¿No está registrado?{" "}
+                    <button
+                      className="text-blue-700 hover:underline dark:text-blue-500"
+                      onClick={() => setShowModal(false)}
+                    ></button>
+                    <Register />
+                  </div>
                 </div>
               </div>
             </div>

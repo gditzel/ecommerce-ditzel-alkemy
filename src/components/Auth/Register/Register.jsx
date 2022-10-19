@@ -53,12 +53,12 @@ export default function Register() {
 
   return (
     <>
-      <p
+      <div
         onClick={() => setShowModal(true)}
-        className="text-blue-700 hover:underline dark:text-blue-500 ml-2 cursor-pointer"
+        className=" text-blue-700 hover:underline dark:text-blue-500 ml-2 cursor-pointer"
       >
         Crear cuenta
-      </p>
+      </div>
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -66,7 +66,7 @@ export default function Register() {
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
-                <div className="flex items-start justify-between p-5 sm:w-96 border-b border-solid border-slate-200 rounded-t">
+                <div className="flex items-start justify-between p-5 w-72 sm:w-96 border-b border-solid border-slate-200 rounded-t">
                   <h3 className="text-black text-2xl font-semibold">
                     Registrarse
                   </h3>
@@ -81,11 +81,15 @@ export default function Register() {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  <form class="space-y-6" action="#" onSubmit={handleSubmit}>
+                  <form
+                    className="space-y-6"
+                    action="#"
+                    onSubmit={handleSubmit}
+                  >
                     <div>
                       <label
-                        for="email"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        htmlFor="email"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                       >
                         Email
                       </label>
@@ -107,7 +111,7 @@ export default function Register() {
                     </div>
                     <div>
                       <label
-                        for="password"
+                        htmlFor="password"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                       >
                         Contraseña
@@ -139,7 +143,7 @@ export default function Register() {
                           />
                         </div>
                         <label
-                          for="remember"
+                          htmlFor="remember"
                           className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                         >
                           Recordar

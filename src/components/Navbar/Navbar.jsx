@@ -13,7 +13,6 @@ import Login from "../Auth/Login/Login";
 const navigation = [
   { name: "Productos", href: "/Productos", current: true },
   { name: <BtnDropdown></BtnDropdown>, current: false },
-  { name: "Contacto", href: "/Contacto", current: true },
   { name: "Ayuda", href: "/Ayuda", current: true },
 ];
 
@@ -105,14 +104,6 @@ export function Navbar() {
                   <BtnDropdown />
                 </span>
               </li>{" "}
-              <li>
-                <Link
-                  to="/Contacto"
-                  className="text-white text-2xl font-medium hover:underline"
-                >
-                  Contacto
-                </Link>
-              </li>
               <li>
                 <Link
                   to="/Ayuda"

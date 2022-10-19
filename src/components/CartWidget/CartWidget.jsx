@@ -13,8 +13,6 @@ export function CartWidget({ children }) {
     setOpen(!open);
   };
 
-  //
-
   return (
     <>
       <button

@@ -43,7 +43,7 @@ export const filterButtons = [
     items: [
       {
         isChecked: true,
-        name: "Mohter Intel",
+        name: "Mother Intel",
       },
       {
         isChecked: true,

@@ -27,7 +27,7 @@ export function BtnDropdown() {
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  to="Amd"
+                  to="/Amd"
                   className={`${
                     active ? "bg-sky-500 text-white" : "text-gray-900"
                   } group flex w-full items-center rounded-md pl-10 py-2 text-sm`}
