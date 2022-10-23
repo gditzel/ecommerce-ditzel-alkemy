@@ -17,7 +17,7 @@ export function CartWidget({ children }) {
     <>
       <button
         type="button"
-        className="rounded-full text-white focus:outline-none"
+        className="rounded-full text-white focus:outline-none mr-5"
         onClick={changeBool}
       >
         {children}

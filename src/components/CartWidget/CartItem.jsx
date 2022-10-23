@@ -1,20 +1,29 @@
 import { TrashIcon } from "@heroicons/react/outline";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-// import { useCartContext } from "../../context/CartContext";
+import { clearCart } from "../../store/Actions/cartActions";
 
 const CartItem = ({ onClick }) => {
-  //   const { cartList, cleanCart, totalPrice } = useCartContext();
+  const state = useSelector((state) => state);
 
-  //   if (cartList.length === 0) {
-  //     return <></>;
-  //   }
+  const dispatch = useDispatch();
+
+  const { cart } = state.shopping;
+
+  if (cart.length === 0) {
+    return <></>;
+  }
+
+  const totalPrice = () => {
+    return cart.reduce((prev, act) => prev + act.quantity * act.price, 0);
+  };
 
   return (
     <>
       <div className="flex justify-end m-5">
         <button
           className="flex items-center justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700"
-          //   onClick={cleanCart}
+          onClick={() => dispatch(clearCart())}
         >
           Vaciar carrito
           <TrashIcon className="ml-3 h-6 w-6" />
@@ -24,8 +33,7 @@ const CartItem = ({ onClick }) => {
       <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
         <div className="flex justify-around text-lg font-medium text-gray-900">
           <p>Precio total </p>
-          {/* <p>${totalPrice()}</p> */}
-          <p>$5000</p>
+          <p>${totalPrice()}</p>
         </div>
         <div className="mt-6">
           <Link

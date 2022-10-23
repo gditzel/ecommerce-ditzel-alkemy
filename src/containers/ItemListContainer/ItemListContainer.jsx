@@ -1,35 +1,33 @@
-import { useEffect, useState } from "react";
-import { collection, getDocs, getFirestore } from "firebase/firestore";
-
 import Spinner from "../../components/Spinner/Spinner";
 import ItemList from "./ItemList";
+import { useFirebaseStore } from "../../hooks/useFirebaseStore";
+import { useSearchParams } from "react-router-dom";
 
 const ItemListContainer = () => {
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      const db = getFirestore();
-      const queryColectionsItems = collection(db, "items");
-      getDocs(queryColectionsItems)
-        .then((resp) =>
-          setItems(resp.docs.map((prod) => ({ id: prod.id, ...prod.data() })))
-        )
-        .catch((err) => console.log(err))
-        .finally(() => setLoading(false));
-    }, 700);
-  }, []);
+  function capitalize(word) {
+    if (word) return word[0].toUpperCase() + word.slice(1);
+  }
+  const [searchParams] = useSearchParams(),
+    searchKeyword = searchParams.get("searchKeyword"),
+    { loading, items } = useFirebaseStore(),
+    filter = Array.from(items).filter((element) =>
+      element.name.includes(capitalize(searchKeyword))
+    );
 
   return (
     <>
       <div className="text-center">
-        {loading ? <Spinner /> : <ItemList items={items} />}
+        {loading ? (
+          <Spinner />
+        ) : (
+          <ItemList
+            items={filter.length > 0 ? filter : items}
+            search={searchKeyword}
+          />
+        )}
       </div>
     </>
   );
 };
 
 export default ItemListContainer;
-
-/**category, desc, image /assets/image/motheramd.jpg, imageAlt, name, price, stock */

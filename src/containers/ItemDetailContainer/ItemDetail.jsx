@@ -1,4 +1,3 @@
-// import { useCartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 
 import { ItemCount } from "./ItemCount";
@@ -10,16 +9,18 @@ import {
   TruckIcon,
   CheckIcon,
 } from "@heroicons/react/outline";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../store/Actions/cartActions";
 
 const ItemDetail = ({ items, idProduct }) => {
   const { id, name, price, image, desc, imageAlt, stock } = items;
   const initialCount = 1;
 
-  //   const { addToCart } = useCartContext();
+  const dispatch = useDispatch();
 
   const OnAdd = (count, updateCount) => {
     if (stock !== 0) {
-      //   addToCart(items, count);
+      dispatch(addToCart(items, count));
       updateCount(initialCount);
     }
   };

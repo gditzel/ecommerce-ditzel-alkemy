@@ -11,10 +11,13 @@ import { useState, useEffect } from "react";
 
 import Spinner from "../../components/Spinner/Spinner";
 import NewItemsList from "../NewItemsContainer/NewItemsList";
+import { useDispatch } from "react-redux";
+import { initializeProducts } from "../../store/Actions/cartActions";
 
 const NewItems = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setTimeout(() => {
@@ -34,6 +37,8 @@ const NewItems = () => {
         .finally(() => setLoading(false));
     }, 700);
   }, []);
+  dispatch(initializeProducts(items));
+
   return (
     <>
       <h1 className="text-2xl text-start mx-10 mt-10 mb-2 uppercase font-bold tracking-widest underline-offset-8 text-slate-600">

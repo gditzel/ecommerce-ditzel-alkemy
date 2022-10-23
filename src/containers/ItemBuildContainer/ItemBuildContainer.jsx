@@ -9,10 +9,13 @@ import {
 
 import Spinner from "../../components/Spinner/Spinner";
 import ItemBuildList from "./ItemBuildList";
+import { useDispatch } from "react-redux";
+import { initializeProducts } from "../../store/Actions/cartActions";
 
 const ItemListContainer = ({ prop, filter }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setTimeout(() => {
@@ -25,8 +28,10 @@ const ItemListContainer = ({ prop, filter }) => {
         )
         .catch((err) => console.log(err))
         .finally(() => setLoading(false));
-    }, 700);
+    }, 100);
   });
+
+  dispatch(initializeProducts(items));
 
   return (
     <>

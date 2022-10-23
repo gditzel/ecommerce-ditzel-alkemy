@@ -1,7 +1,7 @@
 import PanelHardware from "../../components/PanelHardware/PanelHardware";
 import ItemBuilContainer from "../../containers/ItemBuildContainer/ItemBuildContainer";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { CartWidget } from "../../components/CartWidget/CartWidget";
 
 const Monitor = () => {
   const navigate = useNavigate();
@@ -18,11 +18,11 @@ const Monitor = () => {
             >
               Volver atrás
             </button>
-            <Link to="/">
-              <button className="bg-sky-900 rounded py-2 px-4 text-white">
+            <CartWidget>
+              <div className="bg-sky-900 rounded py-2 px-4 text-white">
                 Finalizar compra
-              </button>
-            </Link>
+              </div>
+            </CartWidget>
           </div>
         </div>
         <div className="text-center">

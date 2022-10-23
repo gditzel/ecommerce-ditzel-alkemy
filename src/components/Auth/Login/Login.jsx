@@ -57,7 +57,7 @@ export default function Login() {
   return (
     <>
       <button
-        className="flex p-1 px-3 mr-5 rounded text-white bg-sky-900 hover:bg-sky-700 active:bg-sky-800 shadow-md"
+        className="flex p-1 px-3 mr-4 rounded text-white bg-sky-900 hover:bg-sky-700 active:bg-sky-800 shadow-md"
         type="button"
         onClick={() => setShowModal(true)}
       >

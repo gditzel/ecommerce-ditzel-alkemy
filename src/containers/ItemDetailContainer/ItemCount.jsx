@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import { CartWidget } from "../../components/CartWidget/CartWidget";
 
 export function ItemCount({ stock, initial, onAdd }) {

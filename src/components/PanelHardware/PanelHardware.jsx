@@ -6,7 +6,6 @@ import gpu from "../../assets/icons/gpu.png";
 import hdd from "../../assets/icons/hdd.png";
 import pc from "../../assets/icons/pc.png";
 import display from "../../assets/icons/display.png";
-
 import { Link } from "react-router-dom";
 
 const PanelHardware = () => {

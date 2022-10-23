@@ -19,7 +19,6 @@ import Memoriaram from "./pages/Amd/Memoriaram";
 import Disco from "./pages/Amd/Disco";
 import Gabinete from "./pages/Amd/Gabinete";
 import Monitor from "./pages/Amd/Monitor";
-// import ShoppingCart from "./components/ShoppingCart";
 
 const Error404 = lazy(() => import("./pages/Error404/Error404"));
 
@@ -36,7 +35,6 @@ function App() {
   return (
     <>
       <Navbar />
-      {/* <ShoppingCart /> */}
       <AnimatePresence>
         <Routes>
           <Route
