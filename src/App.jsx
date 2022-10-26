@@ -19,6 +19,7 @@ import Memoriaram from "./pages/Amd/Memoriaram";
 import Disco from "./pages/Amd/Disco";
 import Gabinete from "./pages/Amd/Gabinete";
 import Monitor from "./pages/Amd/Monitor";
+import Cart from "./pages/Cart/Cart";
 
 const Error404 = lazy(() => import("./pages/Error404/Error404"));
 
@@ -213,6 +214,21 @@ function App() {
                 variants={pageTransition}
               >
                 <Help />
+              </motion.div>
+            }
+          ></Route>
+
+          <Route
+            path="/Cart"
+            element={
+              <motion.div
+                className="page"
+                initial="out"
+                animate="in"
+                exit="out"
+                variants={pageTransition}
+              >
+                <Cart />
               </motion.div>
             }
           ></Route>

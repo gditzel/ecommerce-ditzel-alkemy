@@ -18,7 +18,7 @@ export const useFirebaseStore = () => {
         )
         .catch((err) => console.log(err))
         .finally(() => setLoading(false));
-    }, 200);
+    }, 2000);
   }, []);
 
   dispatch(initializeProducts(items));

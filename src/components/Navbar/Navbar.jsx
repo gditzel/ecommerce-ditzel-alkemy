@@ -60,7 +60,7 @@ export function Navbar() {
                 aria-hidden="true"
               />
               {totalQty > 0 && (
-                <h5 className="absolute top-0 mt-5 ml-5 bg-red-600 h-6 w-6 rounded-full flex justify-center text-white">
+                <h5 className="absolute bottom-5 md:top-0 mt-5 ml-5 bg-red-600 h-6 w-6 rounded-full flex justify-center text-white">
                   {totalQty}
                 </h5>
               )}

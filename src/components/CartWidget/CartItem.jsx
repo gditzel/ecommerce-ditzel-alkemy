@@ -35,13 +35,24 @@ const CartItem = ({ onClick }) => {
           <p>Precio total </p>
           <p>${totalPrice()}</p>
         </div>
-        <div className="mt-6">
-          <Link
-            to="/Cart"
-            className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-          >
-            <button onClick={onClick}>Finalizar compra</button>
-          </Link>
+        <div className="mt-6 text-center">
+          {localStorage.getItem("userName") >= 0 ? (
+            <Link to="/">
+              <button onClick={onClick}>
+                <div className="text-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm">
+                  {" "}
+                  Inicie sesión para finalizar su compra
+                </div>
+              </button>
+            </Link>
+          ) : (
+            <Link
+              to="/Cart"
+              className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+            >
+              <button onClick={onClick}>Finalizar compra</button>
+            </Link>
+          )}
         </div>
         <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
           <p>

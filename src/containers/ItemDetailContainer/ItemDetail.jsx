@@ -86,14 +86,14 @@ const ItemDetail = ({ items, idProduct }) => {
               </Link>
             </div>
           </div>
-          <div className="text-gray-400 text-sm">{desc}</div>
+          <div className="text-gray-400 text-sm max-w-md mx-auto">{desc}</div>
           <hr className="border-1 border-gray-400 mx-2"></hr>
           <div className="text-slate-800 bg-gray-300 text-sm rounded-full py-2 max-w-max px-5 mx-auto md:flex md:justify-start md:mx-0">
             SKU: {idProduct}
           </div>
           <hr className="border-1 border-gray-500 mx-2"></hr>
-          <div className="md:flex justify-between items-center">
-            <div className="md:text-left md_ ml-4">
+          <div className="sm:flex sm:justify-center md:justify-between items-center">
+            <div className="md:text-left ml-4">
               <div className="text-3xl text-sky-600">${price}</div>
               <span className="text-sm text-sky-600">Precio especial</span>
             </div>
@@ -110,7 +110,7 @@ const ItemDetail = ({ items, idProduct }) => {
             </div>
           </div>
           <hr className="border-1 border-gray-400 mx-2"></hr>
-          <div className="text-left text-sky-600">
+          <div className="text-left text-sky-600 mx-auto md:mx-0">
             <div className="flex space-x-2">
               <ShieldCheckIcon className="h-6" />
               <p>
