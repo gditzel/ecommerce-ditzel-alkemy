@@ -50,7 +50,6 @@ const ItemCart = ({ onClick }) => {
 
             <div className="flex flex-1 flex-col">
               <div className="flex justify-between text-base font-medium text-gray-900">
-                <p className="ml-4">Precio unitario: ${item.price}</p>
                 <p>Subtotal ${item.quantity * item.price}</p>
               </div>
               <div className="flex flex-1 items-end justify-between text-sm">

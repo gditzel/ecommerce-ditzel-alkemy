@@ -3,9 +3,6 @@ import ItemList from "./ItemList";
 import { useFirebaseStore } from "../../hooks/useFirebaseStore";
 import { useSearchParams } from "react-router-dom";
 
-import "react-loading-skeleton/dist/skeleton.css";
-import Skeleton from "react-loading-skeleton";
-
 const ItemListContainer = () => {
   function capitalize(word) {
     if (word) return word[0].toUpperCase() + word.slice(1);
@@ -21,15 +18,8 @@ const ItemListContainer = () => {
     <>
       <div className="text-center">
         {loading ? (
-          <>
-            {/* <Spinner /> */}
-            <div className="flex justify-center">
-              <Skeleton variant="rounded" width={210} height={118} />
-              <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
-            </div>
-          </>
+          <Spinner />
         ) : (
-          // <Skeleton />
           <ItemList
             items={filter.length > 0 ? filter : items}
             search={searchKeyword}

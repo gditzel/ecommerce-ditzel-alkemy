@@ -26,7 +26,7 @@ const Monitor = () => {
           </div>
         </div>
         <div className="text-center">
-          <ItemBuilContainer prop="monitor" filter=""></ItemBuilContainer>
+          <ItemBuilContainer prop="monitor" filter="Cart"></ItemBuilContainer>
         </div>
       </div>
     </>

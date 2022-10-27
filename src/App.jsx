@@ -20,6 +20,7 @@ import Disco from "./pages/Amd/Disco";
 import Gabinete from "./pages/Amd/Gabinete";
 import Monitor from "./pages/Amd/Monitor";
 import Cart from "./pages/Cart/Cart";
+import MotherIntel from "./pages/Intel/MotherIntel";
 
 const Error404 = lazy(() => import("./pages/Error404/Error404"));
 
@@ -84,6 +85,21 @@ function App() {
           ></Route>
 
           <Route
+            path="/Intel"
+            element={
+              <motion.div
+                className="page"
+                initial="out"
+                animate="in"
+                exit="out"
+                variants={pageTransition}
+              >
+                <Intel />
+              </motion.div>
+            }
+          ></Route>
+
+          <Route
             path="/MotherAMD"
             element={
               <motion.div
@@ -94,6 +110,21 @@ function App() {
                 variants={pageTransition}
               >
                 <MotherAMD />
+              </motion.div>
+            }
+          ></Route>
+
+          <Route
+            path="/MotherIntel"
+            element={
+              <motion.div
+                className="page"
+                initial="out"
+                animate="in"
+                exit="out"
+                variants={pageTransition}
+              >
+                <MotherIntel />
               </motion.div>
             }
           ></Route>
@@ -184,21 +215,6 @@ function App() {
                 variants={pageTransition}
               >
                 <Monitor />
-              </motion.div>
-            }
-          ></Route>
-
-          <Route
-            path="/Intel"
-            element={
-              <motion.div
-                className="page"
-                initial="out"
-                animate="in"
-                exit="out"
-                variants={pageTransition}
-              >
-                <Intel />
               </motion.div>
             }
           ></Route>

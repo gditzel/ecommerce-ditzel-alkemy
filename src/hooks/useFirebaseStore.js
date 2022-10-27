@@ -9,6 +9,7 @@ export const useFirebaseStore = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setTimeout(() => {
       const db = getFirestore();
       const queryColectionsItems = collection(db, "items");
@@ -18,7 +19,7 @@ export const useFirebaseStore = () => {
         )
         .catch((err) => console.log(err))
         .finally(() => setLoading(false));
-    }, 2000);
+    }, 300);
   }, []);
 
   dispatch(initializeProducts(items));

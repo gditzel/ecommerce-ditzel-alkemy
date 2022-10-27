@@ -6,12 +6,15 @@ export const useFirebaseStoreFilter = (idProduct) => {
   const [items, setItems] = useState({});
 
     useEffect(() => {
-        const db = getFirestore();
-        const queryProduct = doc(db, "items", idProduct);
-        getDoc(queryProduct)
-          .then((resp) => setItems({ id: resp.id, ...resp.data() }))
-          .catch((err) => console.log(err))
-          .finally(() => setLoading(false));
+    window.scrollTo(0, 0);
+      setTimeout(() => {
+          const db = getFirestore();
+          const queryProduct = doc(db, "items", idProduct);
+          getDoc(queryProduct)
+            .then((resp) => setItems({ id: resp.id, ...resp.data() }))
+            .catch((err) => console.log(err))
+            .finally(() => setLoading(false));
+      }, 1000);
       }, [idProduct]);
 
     return {loading, items}

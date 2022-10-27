@@ -6,7 +6,6 @@ import Item from "./Item";
 import { filterButtons } from "../../components/Filter/FilterButton";
 import FilterItem from "../../components/Filter/FilterItem";
 import Carousel from "../../components/Carousel/Carousel";
-import { useCatItem } from "../../components/Filter/FilterCheckbox";
 
 const images = ["banner5.jpg", "banner6.jpg", "banner7.jpg", "banner8.jpg"];
 
@@ -16,10 +15,9 @@ export const useFilterContext = () => useContext(FilterContext);
 const ItemList = memo(({ items = [], search }) => {
   const [data, setData] = useState(items);
   const [isFilter, setIsFilter] = useState(data);
+  const [nameItem, setNameItem] = useState("");
 
-  const { nameItem } = useCatItem();
-
-  // console.log(nameItem);
+  console.log(nameItem);
 
   const navigate = useNavigate();
 
@@ -29,13 +27,31 @@ const ItemList = memo(({ items = [], search }) => {
   };
 
   return (
-    <FilterContext.Provider value={{ data, setData, isFilter, setIsFilter }}>
+    <FilterContext.Provider
+      value={{ data, setData, isFilter, setIsFilter, setNameItem }}
+    >
       <div className="lg:hidden">
         <FilterDropdown />
       </div>
-      {nameItem}
+      <div className="md:hidden">
+        {nameItem ? (
+          <div className="bg-sky-900 max-w-max rounded p-2 mx-auto mt-5">
+            <button onClick={handleClick}>
+              <p className="text-white">
+                {nameItem}
+                <span className="text-sky-900 bg-white rounded-full ml-2 px-1">
+                  X
+                </span>
+              </p>
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
+
       {search ? (
-        <div className="bg-sky-900 max-w-min rounded p-2 mx-auto mt-5">
+        <div className="bg-sky-900 max-w-max rounded p-2 mx-auto mt-5">
           <button onClick={handleClick}>
             <p className="text-white">
               {search}

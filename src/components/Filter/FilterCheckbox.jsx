@@ -1,14 +1,10 @@
-import { createContext, useContext, useState } from "react";
+import { useState } from "react";
 
 import { useFilterContext } from "../../containers/ItemListContainer/ItemList";
 
-const CatItem = createContext([]);
-export const useCatItem = () => useContext(CatItem);
-
 function FilterCheckbox({ name, isChecked }) {
   const [checked, setChecked] = useState(isChecked);
-  const { setData, isFilter } = useFilterContext();
-  const [nameItem, setNameItem] = useState("");
+  const { setData, isFilter, setNameItem } = useFilterContext();
 
   const filterResult = (catItem) => {
     setNameItem(catItem);
@@ -24,11 +20,8 @@ function FilterCheckbox({ name, isChecked }) {
     }
   };
 
-  console.log(nameItem);
-
   return (
     <>
-      <CatItem.Provider value={{ nameItem }}></CatItem.Provider>
       <div className="text-sm text-gray-500">
         <label htmlFor={name}>
           <input
