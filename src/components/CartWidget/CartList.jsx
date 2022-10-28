@@ -36,14 +36,14 @@ const ItemCart = ({ onClick }) => {
       <ul className="-my-6 divide-y divide-gray-200">
         {cart.map((item) => (
           <li key={item.id} className="flex py-6">
-            <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+            <div className="hidden sm:block h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
               <img
                 src={item.image}
                 alt={item.imageAlt}
                 className="h-full w-full object-cover object-center"
               />
             </div>
-            <div>
+            <div className="mr-5">
               <div className="ml-3 font-bold">{item.name}</div>
               <p className="ml-3 mt-6 text-gray-500">Qty {item.quantity}</p>
             </div>

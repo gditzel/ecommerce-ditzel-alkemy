@@ -1,7 +1,5 @@
 <h1 align="center"><em>Computer Store </em></h1>
 
-![Computer Store](../../../Desktop/Computer%20Store.jpg)
-
 ## Descripción
 
 Computer Store es un ecommerce en el que el usuario podrá realizar la compra de productos hardware e interactuar con un armador de pc.
